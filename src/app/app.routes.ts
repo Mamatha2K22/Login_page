@@ -1,6 +1,8 @@
 import { Routes } from '@angular/router';
 import { Login } from './Pages/login/login';
-import { Dashboard } from './Pages/dashboard/dashboard';
+import {  Dashboard } from './Pages/dashboard/dashboard';
+import { aPIResolver } from './Pages/api-resolver';
+
 
 
 export const routes: Routes = [
@@ -11,11 +13,21 @@ export const routes: Routes = [
     },
     {
         path:'login',
-        component:Login
+        component:Login,
+        
     },
+
     {
         path:'dashboard',
-        component:Dashboard
+        component:Dashboard,
+        resolve: {
+            preload: aPIResolver
+        }
     }
 
+    
+
+    
+
+    
 ];

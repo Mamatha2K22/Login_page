@@ -1,4 +1,65 @@
-<p>welcome to dashboard !</p>
+<h2>Dashboard</h2>
 
-<button (click)="onLogout()">Logout</button>
+<p *ngIf="username">Welcome, {{ username }}!</p>
 
+<div class="row">
+  <div class="col-6">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>User ID</th>
+          <th>Title</th>
+          <th>Body</th>
+          <th>Action</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of userList; let i = index">
+          <td>{{ item.userId }}</td>
+          <td>{{ item.title }}</td>
+          <td>{{ item.body }}</td>
+          <td>
+            <button class="btn btn-success" (click)="onEdit(item)">Edit</button>
+          </td>
+          <td>
+            <button class="btn btn-danger" (click)="onDelete(item.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="col-5">
+    <div class="card">
+      <div class="card-header bg-warning">
+        <h5>Comments Form</h5>
+      </div>
+      <div class="card-body">
+        <div class="form-group mt-2">
+          <label>Post ID</label>
+          <input type="number" [(ngModel)]="commentObj.userId" class="form-control" placeholder="Enter Post ID">
+        </div>
+
+        <div class="form-group mt-2">
+          <label>Title</label>
+          <input type="text" [(ngModel)]="commentObj.title" class="form-control" placeholder="Enter Title">
+        </div>
+
+        <div class="form-group mt-2">
+          <label>Body</label>
+          <input type="text" [(ngModel)]="commentObj.body" class="form-control" placeholder="Enter Body">
+        </div>
+
+        <div class="text-center mt-3">
+          <button class="btn btn-secondary m-2" (click)="onSave()">Post</button>
+          <button class="btn btn-warning m-2" (click)="onUpdate()">Put</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="text-center mt-4">
+  <button class="btn btn-danger" (click)="onLogout()">Logout</button>
+</div>

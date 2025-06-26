@@ -1,67 +1,111 @@
-.login-container {
-    max-width: 500px;
-    margin: 30px auto 10px auto;
-    padding: 40px;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
+/* Page wrapper: centers everything */
+.page-wrapper {
+  display: grid;
+  place-items: center;
+  padding: 40px 20px;
+  background-color: white;
+  text-align: center;
+  min-height: 100vh;
 }
 
-.login-container h2 {
-    color: #318aff;
-    text-align: center;
-    margin: 0 0 20px 0;
-    font-family: fantasy;
-    font-size: 35px;
+/* Main Title */
+h4 {
+  font-size: 42px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  margin-bottom: 20px;
 }
 
+/* Subheadings */
+.form-title {
+  font-size: 20px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  margin: 5px 0;
+}
+
+h5 {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 5px 0 20px 0;
+}
+
+/* Form layout using CSS Grid */
+form {
+  display: grid;
+  gap: 20px;
+  width: 100%;
+  max-width: 400px;
+  background-color: #f9f9f9;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Form sections centered */
 .form-group {
-    margin-bottom: 20px;
+  display: grid;
+  width: 100%;
 }
 
-.form-group input {
-    width: 100%;
-    padding: 15px 10px;
-    border-radius: 6px;
-    border: 1px solid #318aff;
-    background-color: #f5f5f5;
-    font-size: 16px;
-    outline: none;
-    box-sizing: border-box;
+/* Inner layout using grid */
+.form-field {
+  display: grid;
+  width: 100%;
+  gap: 5px;
+  justify-items: start;
 }
 
+/* Inputs */
+input[type="email"],
+input[type="password"],
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+/* Labels */
+.input-label {
+  font-size: 14px;
+  font-weight: 300;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.required {
+  color: red;
+  font-weight: 100;
+}
+
+/* Button */
 button {
-    width: 100%;
-    padding: 15px;
-    border: none;
-    border-radius: 6px;
-    color: white;
-    font-size: 18px;
-    font-weight: bold;
-    background: linear-gradient(135deg, #318aff, #000000);
-    cursor: pointer;
-    transition: background 0.3s ease;
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: 100;
+  border: none;
+  border-radius: 6px;
+  background-color: #318aff;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 button:hover {
-    background: linear-gradient(135deg, #000000, #318aff);
+  background-color: #256dcc;
 }
 
+/* Toggle Text and Links */
 p {
-    margin-top: 15px;
-    text-align: center;
-    font-size: 14px;
-    color: black;
+  font-size: 14px;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-.highlighted {
-    color: #318aff;
-    text-decoration: underline;
-    font-weight: 500;
-    cursor: pointer;
-}
-
-.highlighted:hover {
-    color: #000000;
-    text-decoration: underline;
+.signup-link,
+.signin-link {
+  color: #318aff;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: underline;
 }
