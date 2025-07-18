@@ -4,18 +4,18 @@
   place-items: center;
   padding: 40px 20px;
   background-color: white;
-  text-align: center;
+  text-align: left;
   min-height: 100vh;
 }
 
-/* Main Title */
+/* Main Title*/ 
 h4 {
   font-size: 42px;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   margin-bottom: 20px;
 }
 
-/* Subheadings */
+/*Subheadings*/ 
 .form-title {
   font-size: 20px;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -25,27 +25,28 @@ h4 {
 h5 {
   font-family: Arial, Helvetica, sans-serif;
   margin: 5px 0 20px 0;
+  text-align: center;
 }
 
-/* Form layout using CSS Grid */
+ /*Form layout using CSS Grid */
 form {
   display: grid;
-  gap: 20px;
+  gap: 5px;
   width: 100%;
   max-width: 400px;
   background-color: #f9f9f9;
   padding: 30px;
   border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
 }
 
-/* Form sections centered */
+/*Form sections centered*/ 
 .form-group {
   display: grid;
   width: 100%;
 }
 
-/* Inner layout using grid */
+/*Inner layout using grid*/ 
 .form-field {
   display: grid;
   width: 100%;
@@ -53,39 +54,49 @@ form {
   justify-items: start;
 }
 
-/* Inputs */
+/*Inputs*/ 
 input[type="email"],
 input[type="password"],
+input[type="confirm_password"],
 input[type="text"] {
-  width: 100%;
+  width: 59%;
   padding: 10px;
   font-size: 14px;
   border: 1px solid #ccc;
   border-radius: 6px;
   box-sizing: border-box;
+  background-color:white;
+  
+  
 }
 
-/* Labels */
+
+/*Labels*/
 .input-label {
   font-size: 14px;
   font-weight: 300;
   font-family: Arial, Helvetica, sans-serif;
+  text-align: left;
 }
 
 .required {
   color: red;
   font-weight: 100;
 }
+.flex flex-col{
+  padding-left: 10px;
 
-/* Button */
-button {
+}
+
+/*Button*/ 
+p-button {
   width: 100%;
   padding: 10px;
   font-size: 16px;
   font-weight: 100;
   border: none;
   border-radius: 6px;
-  background-color: #318aff;
+  color: #318aff;
   color: white;
   cursor: pointer;
   transition: background-color 0.3s ease;
@@ -95,11 +106,12 @@ button:hover {
   background-color: #256dcc;
 }
 
-/* Toggle Text and Links */
+/*Toggle Text and Links*/ 
 p {
   font-size: 14px;
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
 }
 
 .signup-link,

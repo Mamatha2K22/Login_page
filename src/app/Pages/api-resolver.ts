@@ -7,5 +7,5 @@ export const aPIResolver: ResolveFn<any[]> = () => {
   console.log("Rsolve is Running");
   const apiservice = inject(ApiService);
   
-  return apiservice.getUsers();
+  return apiservice.findall();
 };

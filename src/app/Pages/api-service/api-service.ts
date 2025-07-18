@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { map,Observable } from 'rxjs';
+import { TreeNode } from 'primeng/api';
 
 @Injectable({
   providedIn: 'root'
@@ -10,19 +11,20 @@ export class ApiService {
 
   constructor(private http: HttpClient) {}
 
-  getUsers(): Observable<any[]> {
-    return this.http.get<any[]>(this.baseurl);
-  }
+  findall(): Observable<any[]> {
+    return this.http.get<any[]>(this.baseurl).pipe(map(element=>element.map(ele=>({
+      id:ele.id,
+      userId:ele.userId,
+      title:ele.title,
+      body:ele.body
+    })))
+  )
+}
 
-  postComment(data: any): Observable<any> {
-    return this.http.post<any>(this.baseurl, data);
-  }
-
-  deletePost(id: number): Observable<any> {
-    return this.http.delete<any>(`${this.baseurl}/${id}`);
-  }
-
-  updatePost(data: any): Observable<any> {
-    return this.http.put<any>(`${this.baseurl}/1`, data);
-  }
+find(id: number): Observable<any> {
+    return this.http.get<any[]>(this.baseurl).pipe(map(element=>element.map(ele=>({
+      id:ele.id
+  })))
+)
+}
 }

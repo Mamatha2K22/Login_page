@@ -1,8 +1,55 @@
-.table-bordered {
-  border: 2px solid #000; /* solid black border */
+*{
+  margin:0;
+  padding:0;
 }
 
-.table-bordered th,
-.table-bordered td {
-  border: 1px solid #000 !important; /* stronger borders for cells */
+.card{
+position: relative;
+
+padding:2em;
+border:1px solid #ccc;
+border-radius:10px;
+background-color: white;
+text-align:center;
+color: black;
+
+}
+.card-icon {
+  position: absolute;
+  right: 40px;
+  top: 10px;
+  width: 15%;
+  padding: 1px;
+  
+}
+.search-box{
+  margin-top: 20px;
+  margin-left: 30px;
+  margin-top: 40px;
+ 
+}
+
+.grid-container{
+display:grid;
+border: 1px solid red;
+grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+gap:15px;
+justify-content:center
+}
+.card h2{
+  position: relative;
+  left: 10px;
+  top: -22px;
+  width: 15%;
+  padding: 1px;
+  
+}
+.card hr {
+  position: relative;
+  width: -100px;
+  border: none;
+  border-top: 2px solid #ccc; /* This is your line */
+  margin-left: -30px;
+  margin-right: -35px;
+  top:-15px;
 }
