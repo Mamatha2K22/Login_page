@@ -4,7 +4,13 @@ import {  Dashboard } from './Pages/dashboard/dashboard';
 import { aPIResolver } from './Pages/api-resolver';
 import { Home } from './Pages/home/home';
 
-import { PipeMask } from './Pages/pipe-mask/pipe-mask';
+
+
+
+
+import { FormatFieldPipe } from './Pages/format-field-pipe';
+
+
 
 
 
@@ -17,11 +23,6 @@ export const routes: Routes = [
     {
         path:'login',
         component:Login,
-        
-    },
-    {
-        path:'pipemask',
-        component:PipeMask
         
     },
     {
@@ -38,8 +39,11 @@ export const routes: Routes = [
         resolve: {
             preload: aPIResolver
         }
-    }
-
+    },
+    
+    
+    
+    
     
 
     

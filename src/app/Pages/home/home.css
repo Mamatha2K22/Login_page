@@ -16,3 +16,31 @@
     margin: 0 auto 2rem auto;
     display: block;
 }
+
+
+.bg-mediumaquamarine{
+  background-color:mediumaquamarine;
+}
+.bg-orange{
+  background-color: orange;
+}.bg-light-blue{
+  background-color: lightblue;
+}.bg-lavender{
+  background-color: lavender;
+}.bg-aqua{
+  background-color:aqua;
+}.bg-light-yellow{
+  background-color: lightyellow;
+}.bg-light-coral{
+  background-color: lightcoral;
+}.bg-light-grey{
+  background-color: lightgrey;
+}.bg-maroon{
+  background-color: maroon;
+}.bg-darksalmon{
+  background-color:darksalmon;
+}
+
+.action-column{
+  background-color:tomato;
+}

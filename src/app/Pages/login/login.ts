@@ -87,12 +87,8 @@ export class Login implements OnInit {
     this.filteredRatings[subject] = filtered;
   }
 
-  get formKeys(): string[] {
-    return this.subjects;
-  }
-  isInvalid(): boolean {
-    return this.formSubmitted && !this.isAtLeastOneSubjectSelected();
-  }
+  
+ 
   isAtLeastOneSubjectSelected(): boolean {
     return this.subjects.some((subject) => this.registerForm.get(subject)?.value);
   }
@@ -108,7 +104,7 @@ export class Login implements OnInit {
 
 
     this.formSubmitted = true;
-    if (!this.registerForm.valid) {
+   /* if (!this.registerForm.valid) {
       this.ms.add({
         severity: 'error',
         summary: 'Error',
@@ -116,8 +112,76 @@ export class Login implements OnInit {
         life: 3000,
       });
       return;
+    }*/
+   
+    const newUser = this.registerForm.value;
+    const key = 'Local';
+    const users = JSON.parse(localStorage.getItem(key) || '[]');//converting the string format to array of object
+
+
+
+
+
+    // Validate Gmail only
+    if (!newUser.email.endsWith('@gmail.com')) {
+      this.ms.add({
+    severity: 'warn',
+    summary: 'Validation',
+    detail: 'Email must end with @gmail.com',
+    life: 3000
+  });
+  return;
     }
-    if (!this.isAtLeastOneSubjectSelected()) {
+
+    // Check if user already exists
+    const exists = users.find((u: any) => u.email === newUser.email);
+    if (exists) {
+      this.ms.add({
+        severity:'warn',
+        summary:'Validation',
+        detail:'Email already exists!',
+        life:3000
+    });
+    return;
+  }
+
+  const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    if (!regex.test(newUser.password)) {
+      this.ms.add({
+        severity:'warn',
+        summary:'Validation',
+        detail:'Password must contain at least 1 uppercase letter, 1 digit, and 1 special character.',
+        life:3000
+      });
+      return;
+    }
+
+
+
+
+    if (newUser.password != newUser.confirm_password) {
+      this.ms.add({
+        severity:'warn',
+        summary:'Validation',
+        detail:'Password is not matching',
+        life:3000
+
+      });
+      return;
+    }
+
+    
+    if (!newUser.date2) {
+      this.ms.add({
+        severity:'warn',
+        summary:'Validation',
+        detail:'Date is required',
+        life:3000
+      });
+      return;
+    }
+
+     if (!this.isAtLeastOneSubjectSelected()) {
       this.ms.add({
         severity: 'warn',
         summary: 'Validation',
@@ -131,61 +195,12 @@ export class Login implements OnInit {
         this.ms.add({
           severity: 'error',
           summary: 'Validation',
-          detail: `Please select rating for ${subject}`,
+          detail: `Please provide a rating for ${subject}`,
           life: 3000,
         });
         return;
       }
     }
-    const newUser = this.registerForm.value;
-    const key = 'Local';
-    const users = JSON.parse(localStorage.getItem(key) || '[]');//converting the string format to array of object
-
-
-
-
-
-    // Validate Gmail only
-    if (!newUser.email.endsWith('@gmail.com')) {
-      alert('Email must end with @gmail.com');
-      return;
-    }
-
-    // Check if user already exists
-    const exists = users.find((u: any) => u.email === newUser.email);
-    if (exists) {
-      alert('Email already exists!');
-      return;
-    }
-
-
-    if (newUser.password != newUser.confirm_password) {
-      alert('Password is not matching');
-      return;
-    }
-
-    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-    if (!regex.test(newUser.password)) {
-      alert("Password must contain at least 1 uppercase letter, 1 digit, and 1 special character.");
-      return;
-    }
-
-
-
-
-
-    if (!newUser.date2) {
-      alert('Date is Required');
-      return;
-    }
-
-
-
-
-
-
-
-
 
     users.push(newUser);
     localStorage.setItem(key, JSON.stringify(users));
@@ -198,10 +213,7 @@ export class Login implements OnInit {
     });
 
 
-
-
-
-    // Save user to localStorage
+  // Save user to localStorage
     //convert the updated array to string
 
 
@@ -234,10 +246,19 @@ export class Login implements OnInit {
     );
 
     if (found) {
-      alert('Login successful!');
+      this.ms.add({
+        severity:'success',
+        summary:'Success',
+        detail:'Login Successfuliy!'
+      })
       this.router.navigateByUrl('dashboard'); // Adjust route name if needed
     } else {
-      alert('Email or password is incorrect.');
+      this.ms.add({
+        severity:'warn',
+        summary:'Validation',
+        detail:'Email or password is incorrect.',
+        life:3000
+      })
     }
   }
 

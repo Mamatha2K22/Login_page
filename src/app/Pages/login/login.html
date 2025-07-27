@@ -28,7 +28,18 @@
 
     <div class="form-group">
      <!-- <button type="button" (click)="onLogin()">Sign In</button>-->
-      <p-button label="SignIn" variant="text" [raised]="true" severity="secondary" (click)="onLogin()"/>
+      <p-button
+  label="SignIn"
+  variant="text"
+  [raised]="true"
+  severity="secondary"
+  [ngStyle]="loginForm.valid ? {
+    'background-color': 'green',
+    'box-shadow': '0 0 10px #00ff00',
+    'border-radius': '6px'
+  } : {}"
+  (click)="onLogin()"
+/>
     </div>
     <div class="form-group">
       <p>
@@ -132,9 +143,7 @@
   <div class="flex items-center gap-2">
     <!-- Checkbox -->
     <p-checkbox
-      [inputId]="subject"
-      [formControlName]="subject"
-      [binary]="true"
+      [inputId]="subject" [formControlName]="subject" [binary]="true"
     ></p-checkbox>
 
     <!-- Label outside -->
@@ -145,32 +154,43 @@
      <div *ngIf="registerForm.get(subject)?.value">
     <label>Rate your experience in {{ subject | titlecase }}</label>
     <p-autoComplete
-      [formControlName]="subject + 'Rating'"
-      [suggestions]="filteredRatings[subject] || []"
-      (completeMethod)="search($event, subject)"
-      [dropdown]="true"
+      [formControlName]="subject + 'Rating'" [suggestions]="filteredRatings[subject] || []"
+      (completeMethod)="search($event, subject)" [dropdown]="true"
     ></p-autoComplete>
 
     <!-- Validation Message for rating -->
-    <p-message
+     <!-- Field-level validation-->
+    <!--<p-message
       severity="error"
       text="Please provide a rating for {{ subject }}"
       *ngIf="formSubmitted && !registerForm.get(subject + 'Rating')?.value"
-    ></p-message>
+    ></p-message>-->
   </div>
 </div>
 
-  <p-message
+ <!-- <p-message
     severity="error"
     text="Please select at least one subject"
     *ngIf="formSubmitted && !isAtLeastOneSubjectSelected()"
-  ></p-message>
+  ></p-message>-->
    
-    
+
     
     <div class="form-group">
       <!-- <button type="button" (click)="onRegister()">Register</button>-->
-       <p-button label="Register" variant="text" [raised]="true" severity="secondary" (click)="onRegister()"/>
+       <p-button
+  label="Register"
+  variant="text"
+  [raised]="true"
+  severity="secondary"
+  [ngStyle]="registerForm.valid ? {
+    'background-color': 'blue',
+    'box-shadow': '0 0 10px #007bff',
+    'border-radius': '6px'
+  } : {}"
+  (click)="onRegister()"
+/>
+
     </div>
     <div class="form-group">
       <p>
