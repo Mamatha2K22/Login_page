@@ -12,15 +12,10 @@ export class ApiService {
 
   constructor(private http: HttpClient) {}
 
-  getPosts(): Observable<Post[]> {
-    return this.http.get<Post[]>(this.baseurl).pipe(map(element=>element.map(ele=>({
-      id:ele.id,
-      userId:ele.userId,
-      title:ele.title,
-      body:ele.body
-    })))
-  )
+ getPosts(): Observable<Post[]> {
+  return this.http.get<Post[]>(this.baseurl);
 }
+
 
 find(id: number): Observable<any> {
     return this.http.get<any[]>(this.baseurl).pipe(map(element=>element.map(ele=>({

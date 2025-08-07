@@ -45,6 +45,25 @@
   </ng-template>
 </p-table>
 
+<!--<button type="button" (click)="countValues()">count the string</button>
+    <ul>
+      <li *ngFor="let entry of getCount()">
+        Key:{{entry[0]}}|value:{{entry[1]}}
+      </li>
+    </ul>-->
+
+ <h2> Counter: {{ count() }}</h2>
+
+    <button (click)="increment()"> Increase</button>
+    <button (click)="decrement()"> Decrease</button>
+    <button (click)="reset()"> Reset</button>
+
+ <div [style.background]="color()" class="box">
+       Color Box
+    </div>
+    
+    <button (click)="changeColor()">Change Color</button>
+
 <h3>Highlighted Titles (using Pipe):</h3>
 <ul>
   <li *ngFor="let title of topThreeTitles">

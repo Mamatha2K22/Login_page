@@ -4,14 +4,14 @@ export abstract class BaseClass {
   setData(data: any[]) {
     this.data = data;
   }
-  loading=false;
+ // loading=false;
 
   abstract fetch():void;
-   showLoading() {
+   /*showLoading() {
     this.loading = true;
   }
 
   hideLoading() {
     this.loading = false;
-  }
+  }*/
 }

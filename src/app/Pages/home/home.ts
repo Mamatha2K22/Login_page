@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, FormsModule } from '@angular/forms';
@@ -24,14 +24,15 @@ import { BaseClass } from '../base-class';
 })
 export class Home extends BaseClass {
 
-  userList: any[] = [];
+ // userList: any[] = [];
   inputValue: string = '';
   selectedRow: any;
-  searchId!: FormGroup;
+  //searchId!: FormGroup;
   foundPost: any = null;
   errorMessage: string = '';
   selectedRows: number[] = [];
   topThreeTitles: string[] = [];
+
 
   private route = inject(ActivatedRoute);
 
@@ -52,10 +53,9 @@ export class Home extends BaseClass {
     this.topThreeTitles = this.data
       .slice(0, 3)
       .map(item => item.title); // get top 3 titles
-    this.searchId = this.fb.group({
-      id: ['']  //  correct when using FormBuilder
-    });
 
+      
+    
 
   }
 
@@ -125,6 +125,48 @@ export class Home extends BaseClass {
     });
   }
 
+   /*arr=['1','2','4', '1', '2', '3',3,4 ,'4'];
+
+ Mixedcount:Map<any,number>=new Map();
+
+countValues():void{
+  for(let i=0;i<this.arr.length;i++){
+    if(this.Mixedcount.has(this.arr[i])){
+      this.Mixedcount.set(this.arr[i],this.Mixedcount.get(this.arr[i])!+1)
+    }
+    else{
+      this.Mixedcount.set(this.arr[i],1);
+    }
+  }
+
+}
+getCount():[any,number][]{
+  return Array.from(this.Mixedcount.entries());
+}*/
+
+count = signal(0);
+
+  increment() {
+    this.count.update(n => n + 1);
+  }
+
+  decrement() {
+    this.count.update(n => n - 1);
+  }
+
+  reset() {
+    this.count.set(0);
+  }
+  
+
+   color = signal('lightblue');
+
+  
+  changeColor() {
+    const colors = ['lightblue', 'lightgreen', 'lightpink', 'lightcoral', 'lightgray', 'orange', 'yellow'];
+    const random = Math.floor(Math.random() * colors.length);
+    this.color.set(colors[random]);
+  }
 
 
 
